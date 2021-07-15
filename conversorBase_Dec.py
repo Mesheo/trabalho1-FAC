@@ -7,10 +7,13 @@ def conversor_decimal(base, numero):
 
     for posicao in range(len(numero_invertido)):
         resultado_decimal += int(numero_invertido[posicao]) * (base**posicao)
+        
+    return (resultado_decimal)
 
-    print(f'Esse numero na base 10 é {resultado_decimal}')
-    return None
 
-conversor_decimal(base, numero)
+print(conversor_decimal(base, '0100101010'))
+
+# if __name__ == '__main__' :
+#     conversor_decimal()
 
 #caso teste: 101001001 na base 2 saida esperada 329
