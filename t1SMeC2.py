@@ -30,8 +30,8 @@ def somaSM(a,b):
        b = list(map(int,b))
        #print(a,b)
        #converte de volta pra lista de inteiros pq eu preciso disso pra fazer os cálculos
-       resultado = [i for i in range(31)]
-       for i in range(30, 0, -1):
+       resultado = [i for i in range(31)] #31 nao eh incluso
+       for i in range(30, 0, -1): #30 pra baixo
          #print(resultado)
          if (a[i+1] + b[i+1]) == 0:
            resultado[i] = '0'

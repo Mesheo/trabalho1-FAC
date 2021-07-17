@@ -18,5 +18,4 @@ def conversor_decBase(base, numero):
 
     return resultado[::-1]
 
-print(len(conversor_decBase(base,numero)))
-#caso teste 6 na base binaria é 110
+print((conversor_decBase(base,numero)))

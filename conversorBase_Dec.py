@@ -11,7 +11,7 @@ def conversor_decimal(base, numero):
     return (resultado_decimal)
 
 
-print(conversor_decimal(base, '0100101010'))
+print(conversor_decimal(base, numero))
 
 # if __name__ == '__main__' :
 #     conversor_decimal()
