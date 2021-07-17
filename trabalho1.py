@@ -94,27 +94,28 @@ def conversor_decBase(base, numero):
     return resultado[::-1]
 
 def subtracaoBinaria(a, b):
-  a = list(map(int,a))
-  b = list(map(int,b))
-  resultado = []
-  for i in range(len(a)-1, -1, -1):
-    if(a[i] - b[i]) == -1:
-      resultado.insert(0, '1')
-      a[i-1] = a[i-1] - 1
-    elif(a[i] - b[i]) == 1:
-      resultado.insert(0, '1')
-    elif(a[i] - b[i]) == -2:
-      if(i==0):
-        resultado.insert(0,'0')
-        resultado.insert(0,'1')
-      else:
-        a[i-1] = a[i-1] -1
-        resultado.insert(0, '0')
-    else: #caso 0
-      resultado.insert(0, '0') 
-  resultado = list(map(str, resultado))
-  resultado = "".join(resultado)
-  return(resultado)
+    a = list(map(int,a))
+    b = list(map(int,b))
+    resultado = []
+    for i in range(len(a)-1, -1, -1):
+        if(a[i] - b[i]) == -1:
+            resultado.insert(0, '1')
+            a[i-1] = a[i-1] - 1
+        elif(a[i] - b[i]) == 1:
+            resultado.insert(0, '1')
+        elif(a[i] - b[i]) == -2:
+            if(i==0):
+                resultado.insert(0,'0')
+                resultado.insert(0,'1')
+            else:
+                a[i-1] = a[i-1] -1
+                resultado.insert(0, '0')
+        else: #caso 0
+            resultado.insert(0, '0') 
+
+    resultado = list(map(str, resultado))
+    resultado = "".join(resultado)
+    return(resultado)
 
 def negativo_C2(numero):
     bits_invertidos = []
@@ -137,25 +138,24 @@ def somaBinaria(a,b):
     b = list(map(int,b))
     resultado = []
     for i in range(len(a)-1, -1, -1):
-            #print(resultado)
-            if (a[i] + b[i]) == 0:
-                resultado.insert(0,'0')
-            elif(a[i] + b[i]) ==1:
+        if (a[i] + b[i]) == 0:
+            resultado.insert(0,'0')
+        elif(a[i] + b[i]) ==1:
+            resultado.insert(0,'1')
+        elif(a[i] + b[i]) ==2:
+            if (i == 0):
+                resultado.insert(0, '0')
                 resultado.insert(0,'1')
-            elif(a[i] + b[i]) ==2:
-                if (i == 0):
-                    resultado.insert(0, '0')
-                    resultado.insert(0,'1')
-                else:
-                    resultado.insert(0,'0')
-                    a[i-1] = a[i-1] + 1
-            else: #caso 3
-                if(i==0):
-                    resultado.insert(0,'1')
-                    resultado.insert(0,'1')
-                else:
-                    resultado.insert(0,'1')
-                    a[i-1] = a[i-1] + 1
+            else:
+                resultado.insert(0,'0')
+                a[i-1] = a[i-1] + 1
+        else: #caso 3
+            if(i==0):
+                resultado.insert(0,'1')
+                resultado.insert(0,'1')
+            else:
+                resultado.insert(0,'1')
+                a[i-1] = a[i-1] + 1
 
     resultado = list(map(str, resultado))
     resultado = "".join(resultado)
