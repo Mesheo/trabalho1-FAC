@@ -1,11 +1,22 @@
 
 def leitura(nome_arquivo):
     dados = open(nome_arquivo, "r", encoding="utf-8")
-    linhas = []
-    for texto in dados:
-        linha = texto.strip('\n') 
-        linhas.append(linha)
-    return linhas      
+    texto = []
+    print(f'DADOS: {dados}\n')
+    for informacao in dados:
+        linha = informacao.strip('\n') 
+
+        if linha != '':
+            texto.append(linha)
+
+
+    entradas = []
+    for i in range(0, len(texto),2):
+        entrada = []
+        entrada.append(texto[i])
+        entrada.append(texto[i+1])
+        entradas.append(entrada)
+    return entradas   
 
 def oposto(bit):
     if bit == '0':
@@ -234,49 +245,52 @@ def main():
     #ler arquivo de 2 em 2 ✅
     import sys
     nome_do_arquivo = sys.argv[1]
-    input = leitura(nome_do_arquivo)
-    print('Exemplo de entrada: \n')
-    print(f'{input[0]}')
-    print(f'{input[1]}')
+    inputs = leitura(nome_do_arquivo)
 
-    #representar os valores na base 10 usando a logica de SM ✅
-    print('\n', end='')
-    print('Exemplo de saída: \n')
-    print(converter_SM_decimal(input[0]))
-    print(converter_SM_decimal(input[1]))
-    print('\n', end='')
+    
+    for input in inputs:
+        # print('Exemplo de entrada: \n')
+        # print(f'{input[0]}')
+        # print(f'{input[1]}')
 
-    #Realizar as operações de soma e subtração dos valores como sinal e magnitude ✅
-    soma_SM = calculos_SM(input[0], input[1], 'somar') 
-    subtracao_SM = calculos_SM(input[0], input[1],'subtrair') 
-    print(soma_SM)
-    print(subtracao_SM)
-    print('\n', end='')
+        #representar os valores na base 10 usando a logica de SM ✅
+        print('\n', end='')
+        print('Exemplo de saída: \n')
+        print(converter_SM_decimal(input[0]))
+        print(converter_SM_decimal(input[1]))
+        print('\n', end='')
 
-    #Realizar as operações de soma e subtração na base 10. ✅
-    soma = int(converter_SM_decimal(input[0])) + int(converter_SM_decimal(input[1]))
-    subtracao = int(converter_SM_decimal(input[0])) - int(converter_SM_decimal(input[1]))
-    print(soma)
-    print(subtracao)
-    print('\n', end='')
+        #Realizar as operações de soma e subtração dos valores como sinal e magnitude ✅
+        soma_SM = calculos_SM(input[0], input[1], 'somar') 
+        subtracao_SM = calculos_SM(input[0], input[1],'subtrair') 
+        print(soma_SM)
+        print(subtracao_SM)
+        print('\n', end='')
 
-    #Representacao em complemento a 2 ✅
-    print(converter_C2_decimal(input[0]))
-    print(converter_C2_decimal(input[1]))
-    print('\n', end='')
+        #Realizar as operações de soma e subtração na base 10. ✅
+        soma = int(converter_SM_decimal(input[0])) + int(converter_SM_decimal(input[1]))
+        subtracao = int(converter_SM_decimal(input[0])) - int(converter_SM_decimal(input[1]))
+        print(soma)
+        print(subtracao)
+        print('\n', end='')
 
-    #Realizar as operações de soma e subtração dos valores como sinal e magnitude ✅
-    soma_C2 = calculos_C2(input[0], input[1] , 'somar')
-    subtracao_C2 = calculos_C2(input[0], input[1], 'subtrair')
-    print(soma_C2)
-    print(subtracao_C2)
-    print('\n', end='')
+        #Representacao em complemento a 2 ✅
+        print(converter_C2_decimal(input[0]))
+        print(converter_C2_decimal(input[1]))
+        print('\n', end='')
 
-    #Realizar as operações de soma e subtração na base 10. ✅
-    soma1 = int(converter_C2_decimal(input[0])) + int(converter_C2_decimal(input[1]))
-    subtracao1 = int(converter_C2_decimal(input[0])) - int(converter_C2_decimal(input[1]))
-    print(soma1)
-    print(subtracao1)
-    print('\n', end='')
+        #Realizar as operações de soma e subtração dos valores como sinal e magnitude ✅
+        soma_C2 = calculos_C2(input[0], input[1] , 'somar')
+        subtracao_C2 = calculos_C2(input[0], input[1], 'subtrair')
+        print(soma_C2)
+        print(subtracao_C2)
+        print('\n', end='')
+
+        #Realizar as operações de soma e subtração na base 10. ✅
+        soma1 = int(converter_C2_decimal(input[0])) + int(converter_C2_decimal(input[1]))
+        subtracao1 = int(converter_C2_decimal(input[0])) - int(converter_C2_decimal(input[1]))
+        print(soma1)
+        print(subtracao1)
+        print('\n', end='')
 
 main()
