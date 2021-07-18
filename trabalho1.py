@@ -65,7 +65,6 @@ def conversor_binario_decimal(numero):
         
     return (resultado_decimal)
 
-
 def conversor_decimal(numero):
     numero_invertido = numero[::-1]
     resultado_decimal = 0
@@ -116,21 +115,6 @@ def subtracaoBinaria(a, b):
     resultado = list(map(str, resultado))
     resultado = "".join(resultado)
     return(resultado)
-
-def negativo_C2(numero):
-    bits_invertidos = []
-    for posicao in range(len(numero)):
-        bits_invertidos.append(oposto(numero[posicao]))
-    
-    acrescimo1 = '' #criando o numero binario equivalente pra ser somado
-    for i in range(len(numero)-1):
-        acrescimo1 += '0'
-    acrescimo1 += '1'
-
-    numero = ''.join(bits_invertidos)
-    numero_C2 = somaBinaria(numero, acrescimo1)
-
-    return numero_C2
 
 def somaBinaria(a,b): 
 
@@ -190,7 +174,6 @@ def calculos_SM(numero1, numero2, operacao):
             magnitude_resultado = subtracaoBinaria(magnitude_numero1, magnitude_numero2) 
             sinal_resultado = sinal_numero1
         else: 
-            print(f'Numero maior = {numero2}')
             sinal_resultado = sinal_numero2
             magnitude_resultado = subtracaoBinaria(magnitude_numero2, magnitude_numero1) 
 
@@ -198,11 +181,11 @@ def calculos_SM(numero1, numero2, operacao):
     resultado = f'{sinal_resultado}{magnitude_resultado}'
 
     #Checando se aconteceu overflow
-    if len(resultado) >= 33: 
-        raise Exception("Sorry, you reached Overflow!")
+    # if len(resultado) >= 33: 
+    #     raise Exception("Sorry, you reached Overflow!")
     
     return resultado
-    
+
 def calculos_C2(numero1, numero2, operacao):
     if operacao == 'subtrair':
         numero2 = negativo_C2(numero2)
@@ -232,9 +215,26 @@ def calculos_C2(numero1, numero2, operacao):
         resultado_binario = ''.join(soma_trim)[::-1]
         return resultado_binario
 
+def negativo_C2(numero):
+    bits_invertidos = []
+    for posicao in range(len(numero)):
+        bits_invertidos.append(oposto(numero[posicao]))
+    
+    acrescimo1 = '' #criando o numero binario equivalente pra ser somado
+    for i in range(len(numero)-1):
+        acrescimo1 += '0'
+    acrescimo1 += '1'
+
+    numero = ''.join(bits_invertidos)
+    numero_C2 = somaBinaria(numero, acrescimo1)
+
+    return numero_C2
+
 def main():
     #ler arquivo de 2 em 2 ✅
-    input = leitura('teste.txt')
+    import sys
+    nome_do_arquivo = sys.argv[1]
+    input = leitura(nome_do_arquivo)
     print('Exemplo de entrada: \n')
     print(f'{input[0]}')
     print(f'{input[1]}')
