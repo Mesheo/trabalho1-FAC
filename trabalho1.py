@@ -176,7 +176,7 @@ def calculos_SM(numero1, numero2, operacao):
     #resultado onde iremos juntar o sinal resposta com a magnitude resposta 
     resultado = ''
 
-    #comparador para fazer a soma, caso sejam de sinais iguais, ou prosseguir para a subtracao
+    #Operacao caso sejam sinais iguais (soma) ou sinais diferentes (subtracao)
     if sinal_numero1 == sinal_numero2:
         sinal_resultado = sinal_numero1
         magnitude_resultado = somaBinaria(magnitude_numero1, magnitude_numero2)
@@ -192,24 +192,29 @@ def calculos_SM(numero1, numero2, operacao):
     resultado = f'{sinal_resultado}{magnitude_resultado}'
 
     #Checando se aconteceu overflow
-    # if len(resultado) >= 33: 
+    # if len(resultado) >= len(numero1): 
     #     raise Exception("Sorry, you reached Overflow!")
     
     return resultado
 
 def calculos_C2(numero1, numero2, operacao):
     if operacao == 'subtrair':
+        #transoformando o segundo numero em negativo pelas regras do complemento a 2
         numero2 = negativo_C2(numero2)
 
+        #somando os numeros sem se preocupar caso o digito mais a esquerda atinga overflow
         soma_overflow = somaBinaria(numero1, numero2)
+
         soma_trim = []
-
-
-        i = len(soma_overflow) -1
+         
+        #Percorremos da direita a soma_overflow e preenchemos a soma_trim ate 
+        #atingir o tamanho de bits equivalentes aos numeros usados na soma 
+        posicao = len(soma_overflow)-1 
         while len(soma_trim) < len(numero1):
-            soma_trim.append(soma_overflow[i])
-            i -= 1
+            soma_trim.append(soma_overflow[posicao])
+            posicao -= 1
 
+        #transformando a lista em uma string 
         resultado_binario = ''.join(soma_trim)[::-1]
         return resultado_binario
     
