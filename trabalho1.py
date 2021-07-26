@@ -2,7 +2,7 @@
 def leitura(nome_arquivo):
     dados = open(nome_arquivo, "r", encoding="utf-8")
     texto = []
-    print(f'DADOS: {dados}\n')
+    # print(f'DADOS: {dados}\n')
     for informacao in dados:
         linha = informacao.strip('\n') 
 
@@ -259,8 +259,6 @@ def main():
         # print(f'{input[1]}')
 
         #representar os valores na base 10 usando a logica de SM ✅
-        print('\n', end='')
-        print('Exemplo de saída: \n')
         print(converter_SM_decimal(input[0]))
         print(converter_SM_decimal(input[1]))
         print('\n', end='')
